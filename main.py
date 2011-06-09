@@ -166,12 +166,12 @@ class Window(pyglet.window.Window):
         pyglet.window.Window.__init__(self)
         
         self.LINE_LENGHT = 7
-        self.ANGLE = 60
-        self.STEPS = 6
+        self.ANGLE = 90
+        self.STEPS = 4
         
-        self.START_POINT = Vector2((self.width - self.LINE_LENGHT)/2, 
-            (self.height - self.LINE_LENGHT)/2)
-        #~ self.START_POINT = Vector2(300, 100)
+        #~ self.START_POINT = Vector2((self.width - self.LINE_LENGHT)/2, 
+            #~ (self.height - self.LINE_LENGHT)/2)
+        self.START_POINT = Vector2(300, 100)
         self.START_DIRECTION = Vector2(0, 1)
 
         self.VARIABLES = {
