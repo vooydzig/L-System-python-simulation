@@ -3,7 +3,7 @@
 
 import rabbyt
 import pyglet
-
+import os
 from systems import *
 
 
@@ -18,32 +18,42 @@ class Window(pyglet.window.Window):
         rabbyt.clear()
         self.system.draw()
 
+    def on_key_press(self, symbol, modifiers):
+        if symbol == pyglet.window.key.S:
+            mgr = pyglet.image.get_buffer_manager()
+            name = "%s_%d.png"%(self.system.name, self.system.steps)
+            name = os.path.join('gfx', name)
+            mgr.get_color_buffer().save(name)
+            
+        if symbol == pyglet.window.key.PLUS:
+            self.system.steps += 1
+            self.system.lenght /= 2
+            self.system.simulate()
+        
+        if symbol == pyglet.window.key.MINUS:
+            self.system.steps -= 1
+            self.system.lenght *= 2
+            self.system.simulate()
 
-system1 =  LSystem()
-system1.rules = {
-        'F':'FF-F-F-F-FF',
+
+system = LSystem(start = 'X', steps = 6, lenght = 2, angle = 25, name = 'Leaf')
+system.rules = {
+        'X':'F-[[X]+X]+F[+FX]-X',
+        'F':'FF'
 }
-system1.simulate()
+system.simulate()
 
-system2 =  LSystem(lenght = 5, steps=2)
-system2.rules = {
-        'F':'F+f-FF+F+FF+Ff+FF-f+FF-F-FF-Ff-FFF',
-        'f':'ffffff'
+
+system6 = LSystem(start = 'A', steps = 8, lenght = 2, angle = 60, name = 'Sierpinski triangle')
+system6.rules = {
+        'A':'B-A-B',
+        'B':'A+B+A'
 }
-system2.simulate()
-
-system3 =  LSystem(lenght = 5, steps = 3)
-system3.rules = {
-        'F':'F-F+F+FF−F−F+F',
+system6.variables = {
+        'A':system6._draw_forward,
+        'B':system6._draw_forward,
 }
-system3.simulate()
+system6.simulate()
 
-system4 =  LSystem(lenght = 5, steps=3)
-system4.rules = {
-        'F':'F+F-F-F+F',
-}
-system4.simulate()
-
-
-window = Window(system4)
+window = Window(system6)
 pyglet.app.run()
