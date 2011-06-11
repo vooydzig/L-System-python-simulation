@@ -49,3 +49,17 @@ Keyboard:
 * '-' - generate previous iteration
 * '*' - multiply line lenght by 2
 * '/' - divide line lenght by 2
+
+Supported operations
+========
+Default Constants
+-------
+* '+' - turn right by given angle
+* '-' - turn left by given angle
+* '[' - push state to stack, color is set to R-50, G, B-50
+* ']' - pop state from stack
+
+Default Variables
+----------
+* 'F' - draw line from current point in given direction
+* 'f' - move from current point in given direction
