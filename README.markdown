@@ -44,7 +44,7 @@ use `system.simulate()` to generate final L-System.
 Keyboard:
 --------
 * 's' - generates screenshoot in gfx/ directory. Name of the screenshoot is:
-  [system.nam]e_[system.steps].png
+  [system.name]_[system.steps].png
 * '+' - generate next iteration, add one step 
 * '-' - generate previous iteration
 * '*' - multiply line lenght by 2
