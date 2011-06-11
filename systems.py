@@ -6,7 +6,7 @@ import math
 
 from vector import Vector2
 
-class LSystem(object):
+class LSystem2(object):
     def __init__(self, start = 'F-F-F-F', lenght = 10, angle = 90, steps = 4, name = 'Sample'):
         self.lenght = lenght
         self.angle = angle
@@ -30,8 +30,8 @@ class LSystem(object):
         
         self.states = []
         
-        self.START_POINT = Vector2(0, 0 )
-        self.START_DIRECTION = Vector2(1, 0)
+        self.START_POINT = Vector2(0, 0)
+        self.START_DIRECTION = Vector2(1, 1)
         self.START_COLOR = [255, 255, 255]
         
     def draw(self):
@@ -50,10 +50,9 @@ class LSystem(object):
         
     def _draw_forward(self):
         glColor3ub(self.color[0],self.color[1],self.color[2])
-        
-        glVertex3f(self.last_drawing_point.x, self.last_drawing_point.y, 0)
+        glVertex2f(self.last_drawing_point.x, self.last_drawing_point.y)
         next_drawing_point = Vector2(self.last_drawing_point.x+self.drawing_direction.x*self.lenght, self.last_drawing_point.y+self.drawing_direction.y*self.lenght)
-        glVertex3f(next_drawing_point.x, next_drawing_point.y, 0)
+        glVertex2f(next_drawing_point.x, next_drawing_point.y)
         self.last_drawing_point = next_drawing_point.clone()
         
     def _move_forward(self):
@@ -79,7 +78,7 @@ class LSystem(object):
     def _push_state(self):
         self.states.append({'point': self.last_drawing_point, 
             'direction': self.drawing_direction, 'color':self.color})
-        self.color = [self.color[0] - 25, self.color[1], self.color[2]]
+        self.color = [self.color[0] - 50, self.color[1], self.color[2]- 50]
         
     def _pop_state(self):
         state = self.states.pop()
