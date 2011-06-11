@@ -19,14 +19,14 @@ Window
 Use main.Window class for Your simulations. 
 TODO: add more window methods
 
-Create LSystem:
+Create L-System:
 ----
 system = LSystem2(start = 'F-F-F-F', lenght = 10, angle = 90, steps = 4, name =
 'Sample')
 
 params are:
 
-* start - axiom, 
+* start - axiom 
 * lenght - line lenght in pixels that is used for drawing
 * angle - angle in degrees used for rotation
 * steps - number of iterations
